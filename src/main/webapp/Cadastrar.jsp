@@ -19,7 +19,7 @@
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="#">
+        <a class="navbar-brand" href="index.jsp">
             <img src="./images/logoAcademia.png" width="30" height="30" class="d-inline-block align-top" alt="">
             Academia Atlas
         </a>
@@ -48,5 +48,43 @@
             </ul>
         </div>
     </nav>
+    <form action="cadastrar" method="POST">
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="nomeCadastro">Nome completo:</label>
+                <input type="text" class="form-control" id="nomeCadastro" name="nomeCadastro" placeholder="Nome completo" required>
+            </div>
+            <div class="form-group col-md-6">
+                <label for="email">Email:</label>
+                <input type="email" class="form-control" id="emailCadastro" name="emailCadastro" placeholder="Email" required>
+            </div>
+            <div class="form-group col-md-6">
+                <label for="senhaCadastro">Senha:</label>
+                <input type="password" class="form-control" id="senhaCadastro" name="senha" placeholder="Senha" required>
+            </div>
+            <div class="form-group col-md-6">
+                <label for="senhaConfirmar">Confirme sua senha:</label>
+                <input type="password" class="form-control" id="senhaConfirmar" name="senhaConfirmar" placeholder="Confirme sua senha" required>
+            </div>
+            <div class="form-group col-md-6">
+                <label for="cpfCadastro">CPF:</label>
+                <input type="text" class="form-control" id="cpfCadastro" name="cpfCadastro" placeholder="CPF" required>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="dataNascimentoCadastro">Data de nascimento::</label>
+                    <input type="date" class="form-control" id="dataNascimentoCadastro" name="dataNascimentoCadastro" required>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="sexoCadastro">Sexo:</label>
+                    <select id="sexoCadastro" class="form-control" required>
+                        <option name="M">Masculino</option>
+                        <option name="F">Feminino</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary">Cadastrar</button>
+    </form>
 </body>
 </html>

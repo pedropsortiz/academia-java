@@ -11,7 +11,7 @@
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="#">
+        <a class="navbar-brand" href="index.jsp">
             <img src="./images/logoAcademia.png" width="30" height="30" class="d-inline-block align-top" alt="">
             Academia Atlas
         </a>
@@ -25,12 +25,12 @@
                     <a class="nav-link" href="#">HOME</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">A ACADEMIA</a>
+                    <a class="nav-link" href="Academia.jsp">A ACADEMIA</a>
                 </li>
-                <a class="nav-link" href="#">HORÁRIO DAS AULAS</a>
+                <a class="nav-link" href="Aula.jsp">HORÁRIO DAS AULAS</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">PLANOS</a>
+                    <a class="nav-link" href="Plano.jsp">PLANOS</a>
                 </li>
                 <a class="nav-link" href="Entrar.jsp">ENTRAR</a>
                 </li>

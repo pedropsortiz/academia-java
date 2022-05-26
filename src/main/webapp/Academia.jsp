@@ -1,8 +1,9 @@
-﻿<html>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<html>
 <head>
     <meta charset="UTF-8"/>
     <title>
-        Página inicial
+        A academia
     </title>
     <!-- CSS only -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
@@ -22,10 +23,10 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" href="#">HOME</a>
+                    <a class="nav-link" href="index.jsp">HOME</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="Academia.jsp">A ACADEMIA</a>
+                    <a class="nav-link" href="#">A ACADEMIA</a>
                 </li>
                 <a class="nav-link" href="Aula.jsp">HORÁRIO DAS AULAS</a>
                 </li>
@@ -40,8 +41,5 @@
             </ul>
         </div>
     </nav>
-
-<%--    Oi--%>
-
 </body>
 </html>

@@ -24,7 +24,7 @@ public class LoginController extends HttpServlet {
 
         HttpSession sessao = req.getSession();
         sessao.setAttribute("usuario_logado", emailLogin);
-        rd = req.getRequestDispatcher("WEB-INF/home/Dashboard.jsp");
+        rd = req.getRequestDispatcher("/WEB-INF/home/Index.jsp");
 
 //        aoba2
 
