@@ -51,11 +51,11 @@
     <form action="login" method="post">
         <div class="form-group">
             <label for="email">Email</label>
-            <input  type="email" class="form-control" id="emailLogin" aria-describedby="emailHelp" required placeholder="Insira seu email aqui:">
+            <input  type="email" class="form-control" name="emailLogin" id="emailLogin" aria-describedby="emailHelp" required placeholder="Insira seu email aqui:">
         </div>
         <div class="form-group">
             <label for="password">Senha</label>
-            <input type="password" class="form-control" id="passwordLogin" required placeholder="Insira sua senha aqui:">
+            <input type="password" class="form-control" name="senhaLogin" id="senhaLogin" required placeholder="Insira sua senha aqui:">
         </div>
         <input type="submit" value="Login" name="Logins">
     </form>

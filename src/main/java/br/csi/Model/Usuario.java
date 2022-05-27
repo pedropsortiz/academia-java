@@ -12,7 +12,7 @@ public class Usuario {
     private String cpfUsuario;
     private char sexoUsuario;
 
-    public Usuario(int idUsuario, String nomeUsuario, String emailUsuario, String senhaUsuario, Date dataNascimentoUsuario, String cpfUsuario, char sexoUsuario) {
+    public Usuario() {
         this.idUsuario = idUsuario;
         this.nomeUsuario = nomeUsuario;
         this.emailUsuario = emailUsuario;

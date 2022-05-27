@@ -1,5 +1,8 @@
 package br.csi.Controller;
 
+import br.csi.Model.Usuario;
+import br.csi.Service.UsuarioService;
+
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -19,15 +22,20 @@ public class LoginController extends HttpServlet {
         String senhaLogin = req.getParameter("senhaLogin");
 
         RequestDispatcher rd;
+        String Url = "WEB-INF/";
 
-//        aoba
+        Usuario usuario = new UsuarioService().autenticar(emailLogin, senhaLogin);
 
-        HttpSession sessao = req.getSession();
-        sessao.setAttribute("usuario_logado", emailLogin);
-        rd = req.getRequestDispatcher("/WEB-INF/home/Index.jsp");
+        if (usuario != null) {
+            HttpSession sessao = req.getSession();
+            sessao.setAttribute("usuario_logado", usuario);
+            Url += "home/index.jsp";
+        } else {
+            req.setAttribute("erro", "Usuário ou senha incorretos");
+            Url += "Entrar.jsp";
+        }
 
-//        aoba2
-
+        rd = req.getRequestDispatcher(Url);
         rd.forward(req, rep);
 
     }

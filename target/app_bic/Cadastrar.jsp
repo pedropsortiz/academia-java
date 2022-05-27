@@ -60,7 +60,7 @@
             </div>
             <div class="form-group col-md-6">
                 <label for="senhaCadastro">Senha:</label>
-                <input type="password" class="form-control" id="senhaCadastro" name="senha" placeholder="Senha" required>
+                <input type="password" class="form-control" id="senhaCadastro" name="senhaCadastro" placeholder="Senha" required>
             </div>
             <div class="form-group col-md-6">
                 <label for="senhaConfirmar">Confirme sua senha:</label>
@@ -68,18 +68,18 @@
             </div>
             <div class="form-group col-md-6">
                 <label for="cpfCadastro">CPF:</label>
-                <input type="text" class="form-control" id="cpfCadastro" name="cpfCadastro" placeholder="CPF" required>
+                <input type="text" class="form-control" id="cpfCadastro" name="CpfCadastro" placeholder="CPF" required>
             </div>
             <div class="form-row">
                 <div class="form-group col-md-6">
-                    <label for="dataNascimentoCadastro">Data de nascimento::</label>
-                    <input type="date" class="form-control" id="dataNascimentoCadastro" name="dataNascimentoCadastro" required>
+                    <label for="dataNascCadastro">Data de nascimento::</label>
+                    <input type="date" class="form-control" id="dataNascCadastro" name="dataNascCadastro" required>
                 </div>
                 <div class="form-group col-md-6">
                     <label for="sexoCadastro">Sexo:</label>
-                    <select id="sexoCadastro" class="form-control" required>
-                        <option name="M">Masculino</option>
-                        <option name="F">Feminino</option>
+                    <select name="sexoCadastro" id="sexoCadastro" class="form-control" required>
+                        <option value="M" name="M">Masculino</option>
+                        <option value="F" name="F">Feminino</option>
                     </select>
                 </div>
             </div>

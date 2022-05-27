@@ -1,0 +1,12 @@
+CREATE TABLE Aluno (
+
+	idAluno SERIAL,
+	nomeAluno VARCHAR(255) NOT NULL,
+	dataNascAluno DATE,
+	dataCadastroAluno TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP,
+	CpfAluno char(14) NOT NULL,
+	SexoAluno char(1) NOT NULL,
+	EmailAluno VARCHAR(255) NOT NULL,
+	SenhaAluno VARCHAR(255) NOT NULL
+
+);
