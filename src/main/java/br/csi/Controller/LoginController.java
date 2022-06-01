@@ -29,7 +29,7 @@ public class LoginController extends HttpServlet {
         if (usuario != null) {
             HttpSession sessao = req.getSession();
             sessao.setAttribute("usuario_logado", usuario);
-            Url += "home/index.jsp";
+            Url += "home/Index.jsp";
         } else {
             req.setAttribute("erro", "Usuário ou senha incorretos");
             Url += "Entrar.jsp";
