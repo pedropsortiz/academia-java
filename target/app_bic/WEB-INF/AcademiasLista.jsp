@@ -1,4 +1,5 @@
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@page isELIgnored="false" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -50,6 +51,11 @@
             overflow-y: hidden;
         }
 
+        img {
+            width: 100%;
+            height: 300px;
+        }
+
         .nav-scroller .nav {
             display: flex;
             flex-wrap: nowrap;
@@ -60,6 +66,13 @@
             white-space: nowrap;
             -webkit-overflow-scrolling: touch;
         }
+        p {
+            max-width: 400ch;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
     </style>
 </head>
 <body>
@@ -79,54 +92,24 @@
             <div class="container">
 
                 <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-                    <div class="col">
-                        <div class="card shadow-sm">
-                            <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Foto da academia" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Foto da academia</text></svg>
-
-                            <div class="card-body">
-                                <p class="card-text">A descrição da academia</p>
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <div class="btn-group">
-                                        <button type="submit" name="botaoEntrar" value="Academia1" class="btn btn-sm btn-outline-secondary">Entrar</button>
-                                        <button type="submit" name="botaoCadastrar" value="Academia1" class="btn btn-sm btn-outline-secondary">Cadastrar</button>
+                    <c:forEach var="academia" items="${academiasLista}">
+                        <div class="col">
+                            <div class="card shadow-sm">
+                                <img id="imagemAcademia" src="${academia.fotoAcademia}" alt="Foto da academia">
+                                <input type="hidden" name="cnpjAcademia" value="${academia.cnpjAcademia}" />
+                                <div class="card-body">
+                                    <p class="card-text">${academia.descricaoAcademia}</p>
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <div class="btn-group">
+                                            <button type="submit" name="botaoEntrar" value="Academia1" class="btn btn-sm btn-outline-secondary">Entrar</button>
+                                            <button type="submit" name="botaoCadastrar" value="Academia1" class="btn btn-sm btn-outline-secondary">Cadastrar</button>
+                                        </div>
+                                        <small class="text-muted">${academia.enderecoAcademia}</small>
                                     </div>
-                                    <small class="text-muted">Endereço rua tal</small>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col">
-                        <div class="card shadow-sm">
-                            <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Foto da academia" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Foto da academia</text></svg>
-
-                            <div class="card-body">
-                                <p class="card-text">A descrição da academia</p>
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <div class="btn-group">
-                                        <button type="submit" name="botaoEntrar" value="Academia2" class="btn btn-sm btn-outline-secondary">Entrar</button>
-                                        <button type="submit" name="botaoCadastrar" value="Academia2" class="btn btn-sm btn-outline-secondary">Cadastrar</button>
-                                    </div>
-                                    <small class="text-muted">Endereço rua tal</small>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="card shadow-sm">
-                            <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Foto da academia" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Foto da academia</text></svg>
-
-                            <div class="card-body">
-                                <p class="card-text">A descrição da academia</p>
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <div class="btn-group">
-                                        <button type="submit" name="botaoEntrar" value="Academia3" class="btn btn-sm btn-outline-secondary">Entrar</button>
-                                        <button type="submit" name="botaoCadastrar" value="Academia3" class="btn btn-sm btn-outline-secondary">Cadastrar</button>
-                                    </div>
-                                    <small class="text-muted">Endereço rua tal</small>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    </c:forEach>
                 </div>
             </div>
         </div>

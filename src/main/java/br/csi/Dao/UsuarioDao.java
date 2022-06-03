@@ -21,7 +21,7 @@ public class UsuarioDao {
             preparedStatement.setString(1, emailAluno);
             preparedStatement.setString(2, senhaAluno);
             resultSet = preparedStatement.executeQuery();
-            System.out.println("GetUsuario: " + preparedStatement);
+//            System.out.println("GetUsuario: " + preparedStatement);
             while (resultSet.next())
             {
                 user = new Usuario();

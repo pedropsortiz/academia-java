@@ -1,6 +1,10 @@
 package br.csi.Controller;
 
 
+import br.csi.Dao.AcademiaDao;
+import br.csi.Model.Academia;
+import br.csi.Service.AcademiaService;
+
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -15,21 +19,23 @@ import java.io.IOException;
 
         protected void doPost(HttpServletRequest req, HttpServletResponse rep) throws ServletException, IOException {
 
+            String cnpjAcademia = req.getParameter("cnpjAcademia");
+            System.out.println("CPNJ:" + cnpjAcademia);
             String botaoEntrar = req.getParameter("botaoEntrar");
             String botaoCadastrar = req.getParameter("botaoCadastrar");
-
             RequestDispatcher rd;
             String Url = "WEB-INF/";
 
             if (botaoEntrar == null)
             {
-                Url += "Cadastrar.jsp";
+                Url = "Cadastrar.jsp";
             }
             else
             {
                 Url = "Entrar.jsp";
             }
-
+            Academia academia = new AcademiaService().getAcademia(cnpjAcademia);
+            req.setAttribute("academiaObj", academia);
             rd = req.getRequestDispatcher(Url);
             rd.forward(req, rep);
 
