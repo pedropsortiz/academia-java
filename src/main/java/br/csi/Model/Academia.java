@@ -2,7 +2,7 @@ package br.csi.Model;
 
 public class Academia {
 
-    private int idAcademiacnpjAcademia;
+    private int idAcademia;
     private String cnpjAcademia;
     private String situacaoAcademia;
     private String nomeFantasiaAcademia;
@@ -13,8 +13,8 @@ public class Academia {
     private String fotoAcademia;
     private String logoAcademia;
 
-    public Academia(int idAcademiacnpjAcademia, String cnpjAcademia, String situacaoAcademia, String nomeFantasiaAcademia, String nomeEmpresarialAcademia, String enderecoAcademia, String contatoAcademia, String descricaoAcademia, String fotoAcademia, String logoAcademia) {
-        this.idAcademiacnpjAcademia = idAcademiacnpjAcademia;
+    public Academia(int idAcademia, String cnpjAcademia, String situacaoAcademia, String nomeFantasiaAcademia, String nomeEmpresarialAcademia, String enderecoAcademia, String contatoAcademia, String descricaoAcademia, String fotoAcademia, String logoAcademia) {
+        this.idAcademia = idAcademia;
         this.cnpjAcademia = cnpjAcademia;
         this.situacaoAcademia = situacaoAcademia;
         this.nomeFantasiaAcademia = nomeFantasiaAcademia;
@@ -34,8 +34,8 @@ public class Academia {
         this.cnpjAcademia = cnpjAcademia;
     }
 
-    public int getIdAcademiacnpjAcademia() {
-        return idAcademiacnpjAcademia;
+    public int getIdAcademia() {
+        return idAcademia;
     }
 
     public String getSituacaoAcademia() {
@@ -70,8 +70,8 @@ public class Academia {
         return logoAcademia;
     }
 
-    public void setIdAcademiacnpjAcademia(int idAcademiacnpjAcademia) {
-        this.idAcademiacnpjAcademia = idAcademiacnpjAcademia;
+    public void setIdAcademia(int idAcademia) {
+        this.idAcademia = idAcademia;
     }
 
     public void setSituacaoAcademia(String situacaoAcademia) {

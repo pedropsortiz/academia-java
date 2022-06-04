@@ -1,12 +1,249 @@
+/* Banco de dados: */
+
 CREATE TABLE Aluno (
-
-	idAluno SERIAL,
-	nomeAluno VARCHAR(255) NOT NULL,
-	dataNascAluno DATE,
-	dataCadastroAluno TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP,
-	CpfAluno char(14) NOT NULL,
-	SexoAluno char(1) NOT NULL,
-	EmailAluno VARCHAR(255) NOT NULL,
-	SenhaAluno VARCHAR(255) NOT NULL
-
+    idAluno SERIAL PRIMARY KEY UNIQUE,
+    nomeAluno VARCHAR (255),
+    emailAluno VARCHAR(255),
+    senhaAluno  VARCHAR(255),
+    dataNascAluno DATE,
+    cpfAluno CHAR (14),
+    sexoAluno CHAR (1),
+    dataCadastroAluno  TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP,
+    idPlano SERIAL,
+    telefoneAluno VARCHAR (255)
 );
+
+CREATE TABLE Academia (
+    idAcademia SERIAL PRIMARY KEY UNIQUE,
+    cnpjAcademia VARCHAR(50),
+    situacaoAcademia VARCHAR(255),
+    nomeFantasiaAcademia VARCHAR (255),
+    nomeEmpresarialAcademia VARCHAR (255),
+    enderecoAcademia VARCHAR(255),
+    contatoAcademia VARCHAR (255),
+    descricaoAcademia VARCHAR(500),
+    fotoAcademia VARCHAR(500),
+    logoAcademia VARCHAR(500)
+);
+
+CREATE TABLE Instrutor (
+    idInstrutor SERIAL PRIMARY KEY UNIQUE,
+    nomeInstrutor VARCHAR (255),
+    dataNascInstrutor DATE,
+    cpfInstrutor CHAR (14),
+    emailInstrutor VARCHAR (255),
+    senhaInstrutor VARCHAR (255),
+    salarioInstrutor FLOAT,
+    sexoInstrutor CHAR (1)
+);
+
+CREATE TABLE Horario (
+    idHorario SERIAL PRIMARY KEY UNIQUE,
+    inicioHorario TIME,
+    fimHorario TIME
+);
+
+CREATE TABLE Historico (
+    idHistorico SERIAL PRIMARY KEY UNIQUE,
+    dataHistorico TIME,
+    massaMHistorico FLOAT,
+    massaGHistorico FLOAT,
+    pesoHistorico FLOAT
+);
+
+CREATE TABLE TelefoneInstrutor (
+    idTelefone SERIAL,
+    idInstrutor SERIAL
+);
+
+CREATE TABLE Atividade (
+    idAtividade SERIAL PRIMARY KEY UNIQUE,
+    nomeAtividade VARCHAR (255),
+    descricaoAtividade VARCHAR (500)
+);
+
+CREATE TABLE Plano (
+    idPlano SERIAL PRIMARY KEY UNIQUE,
+    valorPlano FLOAT,
+    mesesPlano CHAR (2),
+    nomePlano VARCHAR(50),
+    descricaoPlano VARCHAR(255)
+);
+
+CREATE TABLE Ficha (
+    idFicha SERIAL PRIMARY KEY UNIQUE,
+    massaMFicha FLOAT,
+    alturaFicha FLOAT,
+    massaGFicha FLOAT,
+    tipoCorpoFicha VARCHAR (255),
+    pesoIdealFicha FLOAT
+);
+
+CREATE TABLE Turma (
+    idTurma SERIAL PRIMARY KEY UNIQUE,
+    salaTurma VARCHAR (30),
+    grupoTurma VARCHAR (255)
+);
+
+CREATE TABLE FichaAluno (
+    idAluno SERIAL,
+    idFicha SERIAL
+);
+
+CREATE TABLE HistoricoFicha (
+    idFicha SERIAL,
+    idHistorico SERIAL
+);
+
+CREATE TABLE InstrutorAluno (
+    idInstrutor SERIAL,
+    idAluno SERIAL
+);
+
+CREATE TABLE InstrutorHorario (
+    idInstrutor SERIAL,
+    idHorario SERIAL
+);
+
+CREATE TABLE AtividadeTurmaHorario (
+    inicioHorario TIME,
+    fimHorario TIME,
+    diaHorario VARCHAR (255),
+    idTurma SERIAL,
+    idAtividade SERIAL
+);
+
+CREATE TABLE Telefone (
+    idTelefone SERIAL PRIMARY KEY UNIQUE,
+    dddTelefone VARCHAR (11),
+    numeroTelefone VARCHAR (22)
+);
+
+CREATE TABLE InstrutorTurma (
+    idTurma SERIAL,
+    idInstrutor SERIAL
+);
+
+CREATE TABLE academiaInstrutor (
+    idInstrutor SERIAL,
+    idAcademia SERIAL
+);
+
+CREATE TABLE academiaAluno (
+    idAluno SERIAL,
+    idAcademia SERIAL
+);
+
+CREATE TABLE academiaAtividade (
+    idAcademia SERIAL,
+    idAtividade SERIAL
+);
+
+CREATE TABLE academiaPlano (
+    idPlano SERIAL,
+    idAcademia SERIAL
+);
+ 
+ALTER TABLE Aluno ADD CONSTRAINT FK_Aluno_3
+    FOREIGN KEY (idPlano)
+    REFERENCES Plano (idPlano);
+ 
+ALTER TABLE TelefoneInstrutor ADD CONSTRAINT FK_TelefoneInstrutor_1
+    FOREIGN KEY (idTelefone)
+    REFERENCES Telefone (idTelefone);
+ 
+ALTER TABLE TelefoneInstrutor ADD CONSTRAINT FK_TelefoneInstrutor_2
+    FOREIGN KEY (idInstrutor)
+    REFERENCES Instrutor (idInstrutor);
+
+ALTER TABLE FichaAluno ADD CONSTRAINT FK_FichaAluno_1
+    FOREIGN KEY (idFicha)
+    REFERENCES Ficha (idFicha);
+ 
+ALTER TABLE FichaAluno ADD CONSTRAINT FK_FichaAluno_2
+    FOREIGN KEY (idAluno)
+    REFERENCES Aluno (idAluno);
+ 
+ALTER TABLE HistoricoFicha ADD CONSTRAINT FK_HistoricoFicha_1
+    FOREIGN KEY (idFicha)
+    REFERENCES Ficha (idFicha);
+ 
+ALTER TABLE HistoricoFicha ADD CONSTRAINT FK_HistoricoFicha_2
+    FOREIGN KEY (idHistorico)
+    REFERENCES Historico (idHistorico);
+ 
+ALTER TABLE InstrutorAluno ADD CONSTRAINT FK_InstrutorAluno_1
+    FOREIGN KEY (idInstrutor)
+    REFERENCES Instrutor (idInstrutor);
+ 
+ALTER TABLE InstrutorAluno ADD CONSTRAINT FK_InstrutorAluno_2
+    FOREIGN KEY (idAluno)
+    REFERENCES Aluno (idAluno);
+ 
+ALTER TABLE InstrutorHorario ADD CONSTRAINT FK_InstrutorHorario_1
+    FOREIGN KEY (idInstrutor)
+    REFERENCES Instrutor (idInstrutor);
+ 
+ALTER TABLE InstrutorHorario ADD CONSTRAINT FK_InstrutorHorario_2
+    FOREIGN KEY (idHorario)
+    REFERENCES Horario (idHorario);
+ 
+ALTER TABLE AtividadeTurmaHorario ADD CONSTRAINT FK_AtividadeTurmaHorario_1
+    FOREIGN KEY (idTurma)
+    REFERENCES Turma (idTurma);
+ 
+ALTER TABLE AtividadeTurmaHorario ADD CONSTRAINT FK_AtividadeTurmaHorario_2
+    FOREIGN KEY (idAtividade)
+    REFERENCES Atividade (idAtividade);
+ 
+ALTER TABLE InstrutorTurma ADD CONSTRAINT FK_InstrutorTurma_1
+    FOREIGN KEY (idTurma)
+    REFERENCES Turma (idTurma);
+ 
+ALTER TABLE InstrutorTurma ADD CONSTRAINT FK_InstrutorTurma_2
+    FOREIGN KEY (idInstrutor)
+    REFERENCES Instrutor (idInstrutor);
+ 
+ALTER TABLE academiaInstrutor ADD CONSTRAINT FK_academiaInstrutor_1
+    FOREIGN KEY (idAcademia)
+    REFERENCES Academia (idAcademia);
+ 
+ALTER TABLE academiaInstrutor ADD CONSTRAINT FK_academiaInstrutor_2
+    FOREIGN KEY (idInstrutor)
+    REFERENCES Instrutor (idInstrutor);
+ 
+ALTER TABLE academiaAluno ADD CONSTRAINT FK_academiaAluno_1
+    FOREIGN KEY (idAcademia)
+    REFERENCES Academia (idAcademia);
+ 
+ALTER TABLE academiaAluno ADD CONSTRAINT FK_academiaAluno_2
+    FOREIGN KEY (idAluno)
+    REFERENCES Aluno (idAluno);
+ 
+ALTER TABLE academiaAtividade ADD CONSTRAINT FK_academiaAtividade_1
+    FOREIGN KEY (idAtividade)
+    REFERENCES Atividade (idAtividade);
+ 
+ALTER TABLE academiaAtividade ADD CONSTRAINT FK_academiaAtividade_2
+    FOREIGN KEY (idAcademia)
+    REFERENCES Academia (idAcademia);
+ 
+ALTER TABLE academiaPlano ADD CONSTRAINT FK_academiaPlano_1
+    FOREIGN KEY (idAcademia)
+    REFERENCES Academia (idAcademia);
+ 
+ALTER TABLE academiaPlano ADD CONSTRAINT FK_academiaPlano_2
+    FOREIGN KEY (idPlano)
+    REFERENCES Plano (idPlano);
+
+/* Inserts com Academis: */
+
+INSERT INTO Academia (cnpjAcademia, situacaoAcademia, nomeFantasiaAcademia, nomeEmpresarialAcademia, enderecoAcademia, contatoAcademia, descricaoAcademia, fotoAcademia, logoAcademia)
+VALUES ('17.939.290/0001-36', 'Ativo', 'Radical Fitness Academia', 'Giovanna Ottoni Fieri 12345678912', 'Rua Augusta 5687 Centro Santa Maria', '(55) 55 996532654', 'Lorem ipsum dolor sit amet Pellentesque viverra ullamcorper dignissim. Sed mauris neque, viverra at quam non, pulvinar tincidunt ante. Integer tempor consectetur erat. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Ut eleifend sit amet tellus a semper.', 'https://i.em.com.br/8mQcd8ce3KfENntk4P5MOo2lwwM=/790x/smart/imgsapp.em.com.br/app/noticia_127983242361/2021/01/07/1227000/20210107183917965749e.jpeg', 'https://imagensemoldes.com.br/wp-content/uploads/2020/06/Academia-PNG.png');
+INSERT INTO Academia (cnpjAcademia, situacaoAcademia, nomeFantasiaAcademia, nomeEmpresarialAcademia, enderecoAcademia, contatoAcademia, descricaoAcademia, fotoAcademia, logoAcademia)
+VALUES ('19.567.809/0001-28', 'Ativo', 'Prime Fitness', 'Marcos Ottoni Fieri 02546898741', 'Rua Frederico 5687 Centro Tupanciretã', '(55) 55 998957541', 'Lorem ipsum dolor sit amet Pellentesque viverra ullamcorper dignissim. Sed mauris neque, viverra at quam non, pulvinar tincidunt ante. Integer tempor consectetur erat. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Ut eleifend sit amet tellus a semper.', 'https://d3c1e34umh9o6d.cloudfront.net/image/partners/482461/md_0815c34a-8b3f-4a62-b175-659f697da4c6_bbcedbcfeffrente.jfif', 'https://cdn-icons-png.flaticon.com/512/233/233136.png');
+INSERT INTO Academia (cnpjAcademia, situacaoAcademia, nomeFantasiaAcademia, nomeEmpresarialAcademia, enderecoAcademia, contatoAcademia, descricaoAcademia, fotoAcademia, logoAcademia)
+VALUES ('52.368.095/0001-02', 'Ativo', 'Academia Zoom', 'Otávio Ottoni Fieri 98765432111', 'Rua Dos Andes 5687 Centro Cruz Alta', '(55) 55 996352689', 'Lorem ipsum dolor sit amet Pellentesque viverra ullamcorper dignissim. Sed mauris neque, viverra at quam non, pulvinar tincidunt ante. Integer tempor consectetur erat. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Ut eleifend sit amet tellus a semper.', 'https://d3c1e34umh9o6d.cloudfront.net/image/partners/35801/md_d0eca5f5-7fe7-4a05-978c-83a57fed02ca_ccfdfabbadfrente.png', 'https://iconape.com/wp-content/png_logo_vector/top-fit-academia-logo.png');
+
+/* Inserts com Alunos: */
+

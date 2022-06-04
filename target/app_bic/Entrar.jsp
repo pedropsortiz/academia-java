@@ -7,6 +7,8 @@
     <title>
         Entrar
     </title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.css" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
     <meta name="theme-color" content="#712cf9">
@@ -65,12 +67,15 @@
     </style>
 </head>
 <body class="text-center">
+<c:if test="${not empty erro}">
+    ${erro}
+</c:if>
 <c:if test="${not empty academiaObj}">
     <main class="form-signin w-100 m-auto">
         <form action="login" method="post">
             <img class="mb-4" src="${academiaObj.logoAcademia}" alt="" width="72" height="57">
             <h1 class="h3 mb-3 fw-normal">Entrar na ${academiaObj.nomeFantasiaAcademia}</h1>
-
+            <input type="hidden" name="cnpjAcademia" value="${academiaObj.cnpjAcademia}">
             <div class="form-floating">
                 <input type="email" class="form-control" name="emailLogin" id="emailLogin" aria-describedby="emailHelp" required placeholder="Insira seu email aqui:">
                 <label for="email">Endereço de email</label>

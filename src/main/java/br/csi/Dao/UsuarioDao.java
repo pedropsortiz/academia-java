@@ -10,16 +10,17 @@ public class UsuarioDao {
     private PreparedStatement preparedStatement;
     private ResultSet resultSet;
 
-    public Usuario getUsuario(String emailAluno, String senhaAluno){
+    public Usuario getUsuario(String emailAluno, String senhaAluno, String cnpjAcademia){
 
         Usuario user = null;
 
         try (Connection connection = new ConectaDBPostgres().getConexao()) {
-            this.sql = "SELECT idAluno, nomeAluno, emailAluno, senhaAluno FROM Aluno WHERE emailAluno = ? AND senhaAluno = ?;";
+            this.sql = "SELECT Al.idAluno, Al.nomeAluno, Al.emailAluno, Al.senhaAluno, AA.idaluno, AA.idacademia, A.cnpjAcademia FROM Aluno AS Al INNER JOIN AcademiaAluno AS AA ON (AA.idaluno = Al.idaluno) INNER JOIN Academia AS A ON (A.idacademia = AA.idacademia) WHERE Al.emailAluno = ? AND Al.senhaAluno = ? AND A.cnpjAcademia = ?;";
 
             preparedStatement = connection.prepareStatement(this.sql);
             preparedStatement.setString(1, emailAluno);
             preparedStatement.setString(2, senhaAluno);
+            preparedStatement.setString(3, cnpjAcademia);
             resultSet = preparedStatement.executeQuery();
 //            System.out.println("GetUsuario: " + preparedStatement);
             while (resultSet.next())

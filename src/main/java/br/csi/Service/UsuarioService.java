@@ -6,9 +6,9 @@ import java.sql.Date;
 
 public class UsuarioService {
 
-    public Usuario autenticar(String email, String senha) {
+    public Usuario autenticar(String email, String senha, String cnpjAcademia) {
 
-        Usuario u = new UsuarioDao().getUsuario(email, senha);
+        Usuario u = new UsuarioDao().getUsuario(email, senha, cnpjAcademia);
 
         try {
             if (u.getEmailUsuario().equals(email) && u.getSenhaUsuario().equals(senha)){

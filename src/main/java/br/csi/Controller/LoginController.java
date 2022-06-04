@@ -1,6 +1,8 @@
 package br.csi.Controller;
 
+import br.csi.Model.Academia;
 import br.csi.Model.Usuario;
+import br.csi.Service.AcademiaService;
 import br.csi.Service.UsuarioService;
 
 import javax.servlet.RequestDispatcher;
@@ -20,19 +22,22 @@ public class LoginController extends HttpServlet {
 
         String emailLogin = req.getParameter("emailLogin");
         String senhaLogin = req.getParameter("senhaLogin");
+        String cnpjAcademia = req.getParameter("cnpjAcademia");
 
         RequestDispatcher rd;
         String Url = "WEB-INF/";
 
-        Usuario usuario = new UsuarioService().autenticar(emailLogin, senhaLogin);
+        Usuario usuario = new UsuarioService().autenticar(emailLogin, senhaLogin, cnpjAcademia);
+        Academia academia = new AcademiaService().getAcademia(cnpjAcademia);
 
         if (usuario != null) {
             HttpSession sessao = req.getSession();
             sessao.setAttribute("usuario_logado", usuario);
+            sessao.setAttribute("academia_logado", academia);
             Url += "home/Index.jsp";
         } else {
             req.setAttribute("erro", "Usuário ou senha incorretos");
-            Url += "Entrar.jsp";
+            Url = "Entrar.jsp";
         }
 
         rd = req.getRequestDispatcher(Url);

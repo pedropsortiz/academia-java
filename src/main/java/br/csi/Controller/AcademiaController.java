@@ -20,7 +20,6 @@ import java.io.IOException;
         protected void doPost(HttpServletRequest req, HttpServletResponse rep) throws ServletException, IOException {
 
             String cnpjAcademia = req.getParameter("cnpjAcademia");
-            System.out.println("CPNJ:" + cnpjAcademia);
             String botaoEntrar = req.getParameter("botaoEntrar");
             String botaoCadastrar = req.getParameter("botaoCadastrar");
             RequestDispatcher rd;
@@ -28,7 +27,7 @@ import java.io.IOException;
 
             if (botaoEntrar == null)
             {
-                Url = "Cadastrar.jsp";
+                Url += "Academia.jsp";
             }
             else
             {

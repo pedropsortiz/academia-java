@@ -31,6 +31,7 @@ public class UsuarioController extends HttpServlet {
         String CpfUsuario = req.getParameter("CpfCadastro");
         String sexoUsuario = req.getParameter("sexoCadastro");
         String dataEmTexto = req.getParameter("dataNascCadastro");
+        String cnpjAcademia = req.getParameter("cnpjAcademia");
         Date dataNascUsuario = null;
         try {
             dataNascUsuario = new SimpleDateFormat("yyyy-MM-dd").parse(dataEmTexto);
