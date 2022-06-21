@@ -22,13 +22,13 @@ public class LoginController extends HttpServlet {
 
         String emailLogin = req.getParameter("emailLogin");
         String senhaLogin = req.getParameter("senhaLogin");
-        String cnpjAcademia = req.getParameter("cnpjAcademia");
+        String idAcademia = req.getParameter("idAcademia");
 
         RequestDispatcher rd;
         String Url = "WEB-INF/";
 
-        Usuario usuario = new UsuarioService().autenticar(emailLogin, senhaLogin, cnpjAcademia);
-        Academia academia = new AcademiaService().getAcademia(cnpjAcademia);
+        Usuario usuario = new UsuarioService().autenticar(emailLogin, senhaLogin, idAcademia);
+        Academia academia = new AcademiaService().getAcademia(idAcademia);
 
         if (usuario != null) {
             HttpSession sessao = req.getSession();

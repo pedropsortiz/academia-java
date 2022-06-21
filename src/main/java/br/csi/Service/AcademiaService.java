@@ -21,11 +21,11 @@ public class AcademiaService {
 
     }
 
-    public Academia getAcademia(String cnpjAcademia) {
+    public Academia getAcademia(String idAcademia) {
 
         try {
             Academia academia;
-            academia = new AcademiaDao().getAcademia(cnpjAcademia);
+            academia = new AcademiaDao().getAcademia(idAcademia);
             return academia;
         } catch (Exception e) {
             e.printStackTrace();

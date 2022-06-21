@@ -45,16 +45,15 @@ public class AcademiaDao {
         return null;
     }
 
-    public Academia getAcademia(String cnpjAcademia) {
+    public Academia getAcademia(String idAcademia) {
         Academia academia = null;
 
         try (Connection connection = new ConectaDBPostgres().getConexao()) {
-            this.sql = "SELECT * FROM Academia WHERE cnpjAcademia = ?;";
-
+            this.sql = "SELECT * FROM Academia WHERE idAcademia = ?;";
+            int idAcademiaComando = Integer.parseInt(idAcademia);
             preparedStatement = connection.prepareStatement(this.sql);
-            preparedStatement.setString(1, cnpjAcademia);
+            preparedStatement.setInt(1, idAcademiaComando);
             resultSet = preparedStatement.executeQuery();
-            System.out.println("GetUsuario: " + preparedStatement);
             while (resultSet.next()) {
                 academia = new Academia(resultSet.getInt("idAcademia"),
                         resultSet.getString("cnpjAcademia"),

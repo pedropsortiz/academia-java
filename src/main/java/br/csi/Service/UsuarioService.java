@@ -6,9 +6,9 @@ import java.sql.Date;
 
 public class UsuarioService {
 
-    public Usuario autenticar(String email, String senha, String cnpjAcademia) {
+    public Usuario autenticar(String email, String senha, String idAcademia) {
 
-        Usuario u = new UsuarioDao().getUsuario(email, senha, cnpjAcademia);
+        Usuario u = new UsuarioDao().getUsuario(email, senha, idAcademia);
 
         try {
             if (u.getEmailUsuario().equals(email) && u.getSenhaUsuario().equals(senha)){
@@ -22,11 +22,10 @@ public class UsuarioService {
 
     }
 
-    public boolean Inserir(String nomeUsuario, String emailUsuario, String senhaUsuario, String CpfUsuario, String sexoUsuario, Date dataNascUsuario) {
+    public boolean Inserir(String nomeUsuario, String emailUsuario, String senhaUsuario, Date dataNascUsuario, String CpfUsuario, String sexoUsuario, String idPlano, String telefoneAluno, String idAcademia) {
 
-        System.out.println(CpfUsuario);
         try {
-            if (new UsuarioDao().InsertUsuario(nomeUsuario, emailUsuario, senhaUsuario, CpfUsuario, sexoUsuario, dataNascUsuario)){
+            if (new UsuarioDao().InsertUsuario(nomeUsuario, emailUsuario, senhaUsuario, dataNascUsuario, CpfUsuario, sexoUsuario, idPlano, telefoneAluno, idAcademia)){
                 return true;
             }
         }catch (Exception e){

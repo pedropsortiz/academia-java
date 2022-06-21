@@ -37,7 +37,6 @@
     <link href="form-validation.css" rel="stylesheet">
 </head>
 <body class="bg-light">
-c
 <div class="container">
     <main>
         <div class="py-5 text-center">
@@ -52,112 +51,68 @@ c
                     <span class="text-primary">Planos da academia</span>
                 </h4>
                 <ul class="list-group mb-3">
+                    <c:forEach var="plano" items="${planosLista}">
                     <li class="list-group-item d-flex justify-content-between lh-sm">
                         <div>
-                            <h6 class="my-0">Product name</h6>
-                            <small class="text-muted">Brief description</small>
+                            <h6 class="my-0">${plano.nomePlano}</h6>
+                            <small class="text-muted">${plano.descricaoPlano}</small>
                         </div>
-                        <span class="text-muted">$12</span>
+                        <span class="text-muted">R$ ${plano.valorPlano}</span>
                     </li>
-                    <li class="list-group-item d-flex justify-content-between lh-sm">
-                        <div>
-                            <h6 class="my-0">Second product</h6>
-                            <small class="text-muted">Brief description</small>
-                        </div>
-                        <span class="text-muted">$8</span>
-                    </li>
-                    <li class="list-group-item d-flex justify-content-between lh-sm">
-                        <div>
-                            <h6 class="my-0">Third item</h6>
-                            <small class="text-muted">Brief description</small>
-                        </div>
-                        <span class="text-muted">$5</span>
-                    </li>
-                    <li class="list-group-item d-flex justify-content-between bg-light">
-                        <div class="text-success">
-                            <h6 class="my-0">Promo code</h6>
-                            <small>EXAMPLECODE</small>
-                        </div>
-                        <span class="text-success">−$5</span>
-                    </li>
+                    </c:forEach>
                 </ul>
             </div>
             <div class="col-md-7 col-lg-8">
                 <h4 class="mb-3">Formulário de inscrição</h4>
-                <form class="needs-validation" novalidate>
+                <form class="needs-validation" method="POST" action="cadastro">
                     <div class="row g-3">
                         <div class="col-sm-12">
-                            <label for="firstName" class="form-label">Nome</label>
-                            <input type="text" class="form-control" id="firstName" placeholder="" value="" required>
-                            <div class="invalid-feedback">
-                                Valid first name is required.
-                            </div>
+                            <label for="firstName" class="form-label">Nome Completo</label>
+                            <input type="text" class="form-control" name="nomeCadastro" placeholder="Fulano Ciclano da Silva" value="" required>
                         </div>
 
                         <div class="col-12">
                             <label for="email" class="form-label">Email </label>
-                            <input type="email" class="form-control" id="email" placeholder="you@example.com">
-                            <div class="invalid-feedback">
-                                Please enter a valid email address for shipping updates.
-                            </div>
+                            <input type="email" class="form-control" name="emailCadastro" placeholder="seuemail@exemplo.com">
                         </div>
-
+                        <input type="hidden" value="${academiaObj.idAcademia}" name="idAcademia">
                         <div class="col-12">
                             <label for="username" class="form-label">Senha</label>
                             <div class="input-group has-validation">
-                                <input type="password" class="form-control" id="username" placeholder="Username" required>
-                                <div class="invalid-feedback">
-                                    Your username is required.
-                                </div>
+                                <input type="password" class="form-control" name="senhaCadastro" placeholder="Sua senha" required>
                             </div>
                         </div>
 
-
-
                         <div class="col-6">
                             <label for="address" class="form-label">Telefone</label>
-                            <input type="text" class="form-control" id="address" placeholder="1234 Main St" required>
-                            <div class="invalid-feedback">
-                                Please enter your shipping address.
-                            </div>
+                            <input type="text" class="form-control" name="telefoneCadastro" placeholder="(00) 0000-0000" required>
                         </div>
 
                         <div class="col-6">
                             <label for="address" class="form-label">Data de nascimento</label>
-                            <input type="date" class="form-control" id="address" placeholder="1234 Main St" required>
-                            <div class="invalid-feedback">
-                                Please enter your shipping address.
-                            </div>
+                            <input type="date" class="form-control" name="dataCadastro" required>
                         </div>
 
                         <div class="col-md-5">
                             <label for="country" class="form-label">Plano</label>
-                            <select class="form-select" id="country" required>
-                                <option value="">Choose...</option>
-                                <option>United States</option>
+                            <select class="form-select" name="planoCadastro" required>
+                                <c:forEach var="plano" items="${planosLista}">
+                                <option value="${plano.idPlano}">${plano.nomePlano}</option>
+                                </c:forEach>
                             </select>
-                            <div class="invalid-feedback">
-                                Please select a valid country.
-                            </div>
                         </div>
 
                         <div class="col-md-4">
                             <label for="state" class="form-label">Sexo</label>
-                            <select class="form-select" id="state" required>
-                                <option value="">Choose...</option>
-                                <option>California</option>
+                            <select name="sexoCadastro" class="form-select" id="state" required>
+                                <option value="M">M</option>
+                                <option value="F">F</option>
                             </select>
-                            <div class="invalid-feedback">
-                                Please provide a valid state.
-                            </div>
                         </div>
 
                         <div class="col-md-3">
                             <label for="zip" class="form-label">Cpf</label>
-                            <input type="text" class="form-control" id="zip" placeholder="" required>
-                            <div class="invalid-feedback">
-                                Zip code required.
-                            </div>
+                            <input type="text" class="form-control" name="cpfCadastro" placeholder="___.___.___-__" required>
                         </div>
                     </div>
 

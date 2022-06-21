@@ -75,7 +75,7 @@
         <form action="login" method="post">
             <img class="mb-4" src="${academiaObj.logoAcademia}" alt="" width="72" height="57">
             <h1 class="h3 mb-3 fw-normal">Entrar na ${academiaObj.nomeFantasiaAcademia}</h1>
-            <input type="hidden" name="cnpjAcademia" value="${academiaObj.cnpjAcademia}">
+            <input type="hidden" name="idAcademia" value="${academiaObj.idAcademia}">
             <div class="form-floating">
                 <input type="email" class="form-control" name="emailLogin" id="emailLogin" aria-describedby="emailHelp" required placeholder="Insira seu email aqui:">
                 <label for="email">Endereço de email</label>

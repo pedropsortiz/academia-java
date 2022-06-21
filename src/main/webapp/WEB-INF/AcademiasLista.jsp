@@ -60,7 +60,7 @@
                         <div class="col">
                             <div class="card shadow-sm">
                                 <img id="imagemAcademia" src="${academia.fotoAcademia}" alt="Foto da academia">
-                                <input type="hidden" name="cnpjAcademia" value="${academia.cnpjAcademia}"/>
+                                <input type="hidden" name="idAcademia" value="${academia.idAcademia}"/>
                                 <div class="card-body">
                                     <p maxlength="10" id="descricaoAcademia" class="card-text">${academia.descricaoAcademia}...</p>
                                     <div class="d-flex justify-content-between align-items-center">
