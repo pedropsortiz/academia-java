@@ -76,7 +76,6 @@
                         <manifest>
                             <addClasspath>true</addClasspath>
                             <classpathPrefix>lib/</classpathPrefix>
-                            <mainClass>server.Servidor</mainClass>
                         </manifest>
                     </archive>
                     <descriptorRefs>
